@@ -27,6 +27,12 @@
 		1164CB102DA363C900A3A21D /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB0F2DA363C900A3A21D /* UITableViewCell+Extension.swift */; };
 		1164CB132DA3646700A3A21D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 1164CB122DA3646700A3A21D /* Kingfisher */; };
 		1164CB152DA3648600A3A21D /* CharacterListConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB142DA3648600A3A21D /* CharacterListConfigurator.swift */; };
+		1164CB1D2DA3747A00A3A21D /* CharacterDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB172DA3747A00A3A21D /* CharacterDetailsPresenter.swift */; };
+		1164CB1E2DA3747A00A3A21D /* CharacterDetailsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB182DA3747A00A3A21D /* CharacterDetailsWorker.swift */; };
+		1164CB1F2DA3747A00A3A21D /* CharacterDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB192DA3747A00A3A21D /* CharacterDetailsRouter.swift */; };
+		1164CB202DA3747A00A3A21D /* CharacterDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB1A2DA3747A00A3A21D /* CharacterDetailsModels.swift */; };
+		1164CB212DA3747A00A3A21D /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB1B2DA3747A00A3A21D /* CharacterDetailsViewController.swift */; };
+		1164CB222DA3747A00A3A21D /* CharacterDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB1C2DA3747A00A3A21D /* CharacterDetailsInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +57,12 @@
 		1164CB0D2DA363B000A3A21D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		1164CB0F2DA363C900A3A21D /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
 		1164CB142DA3648600A3A21D /* CharacterListConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListConfigurator.swift; sourceTree = "<group>"; };
+		1164CB172DA3747A00A3A21D /* CharacterDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsPresenter.swift; sourceTree = "<group>"; };
+		1164CB182DA3747A00A3A21D /* CharacterDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsWorker.swift; sourceTree = "<group>"; };
+		1164CB192DA3747A00A3A21D /* CharacterDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsRouter.swift; sourceTree = "<group>"; };
+		1164CB1A2DA3747A00A3A21D /* CharacterDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsModels.swift; sourceTree = "<group>"; };
+		1164CB1B2DA3747A00A3A21D /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
+		1164CB1C2DA3747A00A3A21D /* CharacterDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				1164CAF42DA3616300A3A21D /* CharacterList */,
+				1164CB162DA3743200A3A21D /* CharacterDetails */,
 				1164CADD2DA360FC00A3A21D /* AppDelegate.swift */,
 				1164CADF2DA360FC00A3A21D /* SceneDelegate.swift */,
 				1164CB142DA3648600A3A21D /* CharacterListConfigurator.swift */,
@@ -130,6 +143,19 @@
 				1164CB0F2DA363C900A3A21D /* UITableViewCell+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1164CB162DA3743200A3A21D /* CharacterDetails */ = {
+			isa = PBXGroup;
+			children = (
+				1164CB172DA3747A00A3A21D /* CharacterDetailsPresenter.swift */,
+				1164CB182DA3747A00A3A21D /* CharacterDetailsWorker.swift */,
+				1164CB192DA3747A00A3A21D /* CharacterDetailsRouter.swift */,
+				1164CB1A2DA3747A00A3A21D /* CharacterDetailsModels.swift */,
+				1164CB1B2DA3747A00A3A21D /* CharacterDetailsViewController.swift */,
+				1164CB1C2DA3747A00A3A21D /* CharacterDetailsInteractor.swift */,
+			);
+			path = CharacterDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,18 +235,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				1164CB002DA361BD00A3A21D /* CharacterListInteractor.swift in Sources */,
+				1164CB202DA3747A00A3A21D /* CharacterDetailsModels.swift in Sources */,
 				1164CB092DA362EC00A3A21D /* NetworkError.swift in Sources */,
 				1164CB0E2DA363B000A3A21D /* UIView+Extension.swift in Sources */,
 				1164CB0B2DA3630500A3A21D /* APIServiceConstants.swift in Sources */,
 				1164CAE82DA360FC00A3A21D /* RickAndMorty.xcdatamodeld in Sources */,
+				1164CB1D2DA3747A00A3A21D /* CharacterDetailsPresenter.swift in Sources */,
 				1164CB102DA363C900A3A21D /* UITableViewCell+Extension.swift in Sources */,
 				1164CB152DA3648600A3A21D /* CharacterListConfigurator.swift in Sources */,
 				1164CAFE2DA361BD00A3A21D /* CharacterListModels.swift in Sources */,
 				1164CB052DA3629D00A3A21D /* Models.swift in Sources */,
 				1164CB022DA3624A00A3A21D /* CharacterCell.swift in Sources */,
+				1164CB1F2DA3747A00A3A21D /* CharacterDetailsRouter.swift in Sources */,
 				1164CAFB2DA361BD00A3A21D /* CharacterListPresenter.swift in Sources */,
 				1164CAFF2DA361BD00A3A21D /* CharacterListViewController.swift in Sources */,
+				1164CB222DA3747A00A3A21D /* CharacterDetailsInteractor.swift in Sources */,
+				1164CB212DA3747A00A3A21D /* CharacterDetailsViewController.swift in Sources */,
 				1164CAFD2DA361BD00A3A21D /* CharacterListRouter.swift in Sources */,
+				1164CB1E2DA3747A00A3A21D /* CharacterDetailsWorker.swift in Sources */,
 				1164CADE2DA360FC00A3A21D /* AppDelegate.swift in Sources */,
 				1164CAE02DA360FC00A3A21D /* SceneDelegate.swift in Sources */,
 				1164CB072DA362C300A3A21D /* NetworkService.swift in Sources */,

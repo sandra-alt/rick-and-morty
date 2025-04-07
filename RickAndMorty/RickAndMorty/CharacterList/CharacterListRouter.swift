@@ -28,6 +28,23 @@ class CharacterListRouter: CharacterListRoutingLogic, CharacterListDataPassing {
     
     // MARK: - Routing
     func routeToCharacterDetail(characterID: Int) {
-        // TODO
+        let destinationInteractor = CharacterDetailsInteractor(networkService: NetworkService(), characterID: characterID)
+        let destinationPresenter = CharacterDetailsPresenter()
+        let destinationRouter = CharacterDetailsRouter()
+
+        let destinationVC = CharacterDetailsViewController(interactor: destinationInteractor, router: destinationRouter)
+        
+        destinationInteractor.presenter = destinationPresenter
+        destinationPresenter.viewController = destinationVC
+        destinationRouter.viewController = destinationVC
+        destinationRouter.dataStore = destinationInteractor
+
+        navigateToCharacterDetails(source: viewController!, destination: destinationVC)
+    }
+    
+    // MARK: - Navigation
+    
+    func navigateToCharacterDetails(source: CharacterListViewController, destination: CharacterDetailsViewController) {
+        source.navigationController?.pushViewController(destination, animated: true)
     }
 }
