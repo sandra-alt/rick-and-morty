@@ -15,5 +15,9 @@ enum APIServiceConstants {
     static func characterListPath(page: Int) -> String {
         "/character/?page=\(page)"
     }
+    
+    static func character(id: Int) -> String {
+        "/character/\(id)"
+    }
 }
 
