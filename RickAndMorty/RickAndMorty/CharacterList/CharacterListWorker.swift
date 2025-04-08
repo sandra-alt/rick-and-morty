@@ -10,7 +10,8 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
+import Foundation
+import CoreData
 
 final class CharacterWorker {
     
@@ -25,6 +26,30 @@ final class CharacterWorker {
             switch result {
             case .success(let response):
                 completion(.success(response.results))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+}
+
+class CharacterListWorker {
+    private let repository: CharacterRepositoryProtocol
+    
+    init(networkService: NetworkServiceProtocol, persistenceService: CharacterPersistenceService) {
+        self.repository = CharacterRepository(networkService: networkService,
+                                              persistenceService: persistenceService)
+    }
+    
+    init(repository: CharacterRepositoryProtocol) {
+        self.repository = repository
+    }
+    
+    func fetchCharacters(page: Int, completion: @escaping (Result<[Character], Error>) -> Void) {
+        repository.getCharactersList(page: page) { result in
+            switch result {
+            case .success(let characters):
+                completion(.success(characters.results))
             case .failure(let error):
                 completion(.failure(error))
             }

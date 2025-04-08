@@ -26,15 +26,16 @@ class CharacterDetailsInteractor: CharacterDetailsBusinessLogic, CharacterDetail
     var worker: CharacterDetailsWorker?
     var characterID: Int
     
-    init(networkService: NetworkServiceProtocol, characterID: Int) {
-        worker = CharacterDetailsWorker(networkService: networkService)
+    init(networkService: NetworkServiceProtocol, persistenceService: CharacterPersistenceService, characterID: Int) {
+        worker = CharacterDetailsWorker(networkService: networkService,
+                                        persistenceService: persistenceService)
         self.characterID = characterID
     }
     
     func fetchCharacterDetails() {
-        worker?.fetchCharacterDetails(characterID: characterID) { [weak self] response in
-            let character = CharacterDetails.FetchCharacterDetails.Response(character: response)
-            self?.presenter?.presentCharacterDetails(response: character)
+        worker?.fetchCharacterDetails(characterID: characterID) { [weak self] character in
+            let response = CharacterDetails.FetchCharacterDetails.Response(character: character)
+            self?.presenter?.presentCharacterDetails(response: response)
         }
     }
 }

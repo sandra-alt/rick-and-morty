@@ -28,7 +28,8 @@ class CharacterDetailsPresenter: CharacterDetailsPresentationLogic {
             gender: response.character?.gender ?? "",
             origin: response.character?.origin.name ?? "",
             location: response.character?.location.name ?? "",
-            imageURL: response.character?.image ?? ""
+            imageURL: response.character?.image ?? "",
+            imageFilePath: response.character?.localImage
         )
         
         DispatchQueue.main.async {

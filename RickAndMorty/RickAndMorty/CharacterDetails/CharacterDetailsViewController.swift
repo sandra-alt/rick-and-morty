@@ -176,7 +176,18 @@ class CharacterDetailsViewController: UIViewController, CharacterDetailsDisplayL
         genderLabel.text = viewModel.genderText
         originLabel.text = viewModel.originText
         locationLabel.text = viewModel.locationText
-        characterImageView.kf.setImage(with: URL(string: viewModel.imageURL))
+        
+        let imageService = ImageStorageService()
+        if let localPath = viewModel.imageFilePath, imageService.imageExists(for: localPath) {
+
+            if let localImageURL = imageService.localImageURL(from: localPath) {
+                characterImageView.kf.setImage(with: localImageURL)
+            } else if let localImage = imageService.loadImage(from: localPath) {
+                characterImageView.image = localImage
+            }
+        } else if let url = URL(string: viewModel.imageURL) {
+            characterImageView.kf.setImage(with: url)
+        }
     }
     
     override func viewDidLayoutSubviews() {

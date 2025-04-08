@@ -11,20 +11,25 @@
 //
 
 import UIKit
+import CoreData
 
 class CharacterDetailsWorker {
-    var networkService: NetworkServiceProtocol
+    private let repository: CharacterRepositoryProtocol
     
-    init(networkService: NetworkServiceProtocol) {
-        self.networkService = networkService
+    init(networkService: NetworkServiceProtocol, persistenceService: CharacterPersistenceService) {
+        repository = CharacterRepository(networkService: networkService, persistenceService: persistenceService)
+    }
+    
+    init(repository: CharacterRepositoryProtocol) {
+        self.repository = repository
     }
     
     func fetchCharacterDetails(characterID: Int, completion: @escaping (Character?) -> Void) {
-        networkService.fetchCharacter(characterID: characterID) { result in
+        repository.getCharacter(id: characterID) { result in
             switch result {
-            case .success(let response):
-                completion(response)
-            case .failure(let error):
+            case .success(let character):
+                completion(character)
+            case .failure:
                 completion(nil)
             }
         }

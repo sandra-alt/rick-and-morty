@@ -23,11 +23,12 @@ protocol CharacterListDataStore {
 class CharacterListInteractor: CharacterListBusinessLogic {
     
     var presenter: CharacterListPresentationLogic?
-    var worker: CharacterWorker?
+    var worker: CharacterListWorker?
     private var characters: [Character] = []
     
-    init(networkService: NetworkServiceProtocol) {
-        worker = CharacterWorker(networkService: networkService)
+    init(networkService: NetworkServiceProtocol, persistenceService: CharacterPersistenceService) {
+        worker = CharacterListWorker(networkService: networkService,
+                                     persistenceService: persistenceService)
     }
 
     func fetchCharacters(request: CharacterList.FetchCharacters.Request) {
