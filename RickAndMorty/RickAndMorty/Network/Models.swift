@@ -17,14 +17,12 @@ struct Character: Codable {
     let origin: Location
     let location: Location
     let image: String
-    let episode: [String]
-    let url: String
-    let created: String
+    let localImage: String?
 }
 
 struct Location: Codable {
     let name: String
-    let url: String
+    let url: String?
 }
 
 struct CharacterResponse: Codable {

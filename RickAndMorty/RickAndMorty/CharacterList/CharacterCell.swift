@@ -152,7 +152,7 @@ class CharacterCell: UITableViewCell {
     }
     
     override func layoutSubviews() {
-        gradientLayer.frame = tileView.bounds
         super.layoutSubviews()
+        gradientLayer.frame = tileView.bounds
     }
 }

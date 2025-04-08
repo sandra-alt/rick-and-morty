@@ -28,7 +28,9 @@ class CharacterListRouter: CharacterListRoutingLogic, CharacterListDataPassing {
     
     // MARK: - Routing
     func routeToCharacterDetail(characterID: Int) {
-        let destinationInteractor = CharacterDetailsInteractor(networkService: NetworkService(), characterID: characterID)
+        let destinationInteractor = CharacterDetailsInteractor(networkService: NetworkService(),
+                                                               persistenceService: CharacterPersistenceService(),
+                                                               characterID: characterID)
         let destinationPresenter = CharacterDetailsPresenter()
         let destinationRouter = CharacterDetailsRouter()
 

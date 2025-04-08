@@ -31,6 +31,7 @@ enum CharacterDetails {
             let origin: String
             let location: String
             let imageURL: String
+            let imageFilePath: String?
             
             var statusText: String { "Status: \(status)" }
             var speciesText: String { "Species: \(species)" }

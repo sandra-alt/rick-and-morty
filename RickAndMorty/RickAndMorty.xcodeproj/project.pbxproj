@@ -33,6 +33,13 @@
 		1164CB202DA3747A00A3A21D /* CharacterDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB1A2DA3747A00A3A21D /* CharacterDetailsModels.swift */; };
 		1164CB212DA3747A00A3A21D /* CharacterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB1B2DA3747A00A3A21D /* CharacterDetailsViewController.swift */; };
 		1164CB222DA3747A00A3A21D /* CharacterDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB1C2DA3747A00A3A21D /* CharacterDetailsInteractor.swift */; };
+		1164CB272DA3F2AD00A3A21D /* CharacterEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB262DA3F2AD00A3A21D /* CharacterEntity.swift */; };
+		1164CB292DA5BC4C00A3A21D /* CharacterPersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB282DA5BC4C00A3A21D /* CharacterPersistenceService.swift */; };
+		1164CB2B2DA5BD3B00A3A21D /* ImageStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB2A2DA5BD3B00A3A21D /* ImageStorageService.swift */; };
+		1164CB2D2DA5C01E00A3A21D /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB2C2DA5C01E00A3A21D /* NetworkMonitor.swift */; };
+		1164CB2F2DA5C0A200A3A21D /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB2E2DA5C0A200A3A21D /* UIImageView+Extension.swift */; };
+		1164CB312DA5C0D500A3A21D /* KingfisherManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB302DA5C0D500A3A21D /* KingfisherManager+Extension.swift */; };
+		1164CB342DA5C26000A3A21D /* CharacterRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1164CB332DA5C26000A3A21D /* CharacterRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +70,13 @@
 		1164CB1A2DA3747A00A3A21D /* CharacterDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsModels.swift; sourceTree = "<group>"; };
 		1164CB1B2DA3747A00A3A21D /* CharacterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewController.swift; sourceTree = "<group>"; };
 		1164CB1C2DA3747A00A3A21D /* CharacterDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsInteractor.swift; sourceTree = "<group>"; };
+		1164CB262DA3F2AD00A3A21D /* CharacterEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEntity.swift; sourceTree = "<group>"; };
+		1164CB282DA5BC4C00A3A21D /* CharacterPersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPersistenceService.swift; sourceTree = "<group>"; };
+		1164CB2A2DA5BD3B00A3A21D /* ImageStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorageService.swift; sourceTree = "<group>"; };
+		1164CB2C2DA5C01E00A3A21D /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		1164CB2E2DA5C0A200A3A21D /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		1164CB302DA5C0D500A3A21D /* KingfisherManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KingfisherManager+Extension.swift"; sourceTree = "<group>"; };
+		1164CB332DA5C26000A3A21D /* CharacterRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,10 +117,11 @@
 				1164CB142DA3648600A3A21D /* CharacterListConfigurator.swift */,
 				1164CB0C2DA3639B00A3A21D /* Extensions */,
 				1164CB032DA3627600A3A21D /* Network */,
+				1164CB232DA3D98A00A3A21D /* Storage */,
+				1164CB322DA5C24E00A3A21D /* Repository */,
 				1164CAE92DA360FE00A3A21D /* Assets.xcassets */,
 				1164CAEB2DA360FE00A3A21D /* LaunchScreen.storyboard */,
 				1164CAEE2DA360FE00A3A21D /* Info.plist */,
-				1164CAE62DA360FC00A3A21D /* RickAndMorty.xcdatamodeld */,
 			);
 			path = RickAndMorty;
 			sourceTree = "<group>";
@@ -141,6 +156,8 @@
 			children = (
 				1164CB0D2DA363B000A3A21D /* UIView+Extension.swift */,
 				1164CB0F2DA363C900A3A21D /* UITableViewCell+Extension.swift */,
+				1164CB2E2DA5C0A200A3A21D /* UIImageView+Extension.swift */,
+				1164CB302DA5C0D500A3A21D /* KingfisherManager+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -156,6 +173,26 @@
 				1164CB1C2DA3747A00A3A21D /* CharacterDetailsInteractor.swift */,
 			);
 			path = CharacterDetails;
+			sourceTree = "<group>";
+		};
+		1164CB232DA3D98A00A3A21D /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1164CAE62DA360FC00A3A21D /* RickAndMorty.xcdatamodeld */,
+				1164CB262DA3F2AD00A3A21D /* CharacterEntity.swift */,
+				1164CB282DA5BC4C00A3A21D /* CharacterPersistenceService.swift */,
+				1164CB2A2DA5BD3B00A3A21D /* ImageStorageService.swift */,
+				1164CB2C2DA5C01E00A3A21D /* NetworkMonitor.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		1164CB322DA5C24E00A3A21D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				1164CB332DA5C26000A3A21D /* CharacterRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,8 +283,14 @@
 				1164CAFE2DA361BD00A3A21D /* CharacterListModels.swift in Sources */,
 				1164CB052DA3629D00A3A21D /* Models.swift in Sources */,
 				1164CB022DA3624A00A3A21D /* CharacterCell.swift in Sources */,
+				1164CB2D2DA5C01E00A3A21D /* NetworkMonitor.swift in Sources */,
+				1164CB2F2DA5C0A200A3A21D /* UIImageView+Extension.swift in Sources */,
 				1164CB1F2DA3747A00A3A21D /* CharacterDetailsRouter.swift in Sources */,
 				1164CAFB2DA361BD00A3A21D /* CharacterListPresenter.swift in Sources */,
+				1164CB292DA5BC4C00A3A21D /* CharacterPersistenceService.swift in Sources */,
+				1164CB342DA5C26000A3A21D /* CharacterRepository.swift in Sources */,
+				1164CB272DA3F2AD00A3A21D /* CharacterEntity.swift in Sources */,
+				1164CB312DA5C0D500A3A21D /* KingfisherManager+Extension.swift in Sources */,
 				1164CAFF2DA361BD00A3A21D /* CharacterListViewController.swift in Sources */,
 				1164CB222DA3747A00A3A21D /* CharacterDetailsInteractor.swift in Sources */,
 				1164CB212DA3747A00A3A21D /* CharacterDetailsViewController.swift in Sources */,
@@ -255,6 +298,7 @@
 				1164CB1E2DA3747A00A3A21D /* CharacterDetailsWorker.swift in Sources */,
 				1164CADE2DA360FC00A3A21D /* AppDelegate.swift in Sources */,
 				1164CAE02DA360FC00A3A21D /* SceneDelegate.swift in Sources */,
+				1164CB2B2DA5BD3B00A3A21D /* ImageStorageService.swift in Sources */,
 				1164CB072DA362C300A3A21D /* NetworkService.swift in Sources */,
 				1164CAFC2DA361BD00A3A21D /* CharacterListWorker.swift in Sources */,
 			);
