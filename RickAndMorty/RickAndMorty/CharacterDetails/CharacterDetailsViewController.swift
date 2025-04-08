@@ -38,8 +38,8 @@ class CharacterDetailsViewController: UIViewController, CharacterDetailsDisplayL
     
     // MARK: - UI Components
     
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
+    private lazy var scrollView = UIScrollView()
+    private lazy var contentView = UIView()
     
     private lazy var gradientLayer: CAGradientLayer = {
         let gradient = CAGradientLayer()
@@ -56,9 +56,14 @@ class CharacterDetailsViewController: UIViewController, CharacterDetailsDisplayL
     private lazy var vStack: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
-        view.alignment = .center
+        view.alignment = .fill
         view.distribution = .fill
         view.spacing = Layout.spacing
+        return view
+    }()
+    
+    private lazy var characterBgView: UIView = {
+        let view = UIView()
         return view
     }()
     
@@ -68,6 +73,7 @@ class CharacterDetailsViewController: UIViewController, CharacterDetailsDisplayL
         view.clipsToBounds = true
         view.layer.cornerRadius = Layout.imageCornerRadius
         view.backgroundColor = .systemGray6
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -95,11 +101,11 @@ class CharacterDetailsViewController: UIViewController, CharacterDetailsDisplayL
         return view
     }()
     
-    private lazy var statusLabel = { UILabel() }()
-    private lazy var speciesLabel = { UILabel() }()
-    private lazy var genderLabel = { UILabel() }()
-    private lazy var originLabel = { UILabel() }()
-    private lazy var locationLabel = { UILabel() }()
+    private lazy var statusLabel = UILabel()
+    private lazy var speciesLabel = UILabel()
+    private lazy var genderLabel = UILabel()
+    private lazy var originLabel = UILabel()
+    private lazy var locationLabel = UILabel()
     
     private var interactor: CharacterDetailsBusinessLogic?
     private var router: (CharacterDetailsRoutingLogic & CharacterDetailsDataPassing)?
@@ -137,7 +143,9 @@ class CharacterDetailsViewController: UIViewController, CharacterDetailsDisplayL
         
         view.layer.insertSublayer(gradientLayer, at: 0)
         
-        [characterImageView, nameLabel, tileView].forEach {
+        characterBgView.addSubview(characterImageView)
+        
+        [characterBgView, nameLabel, tileView].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             vStack.addArrangedSubview($0)
         }
@@ -161,6 +169,10 @@ class CharacterDetailsViewController: UIViewController, CharacterDetailsDisplayL
             
             characterImageView.widthAnchor.constraint(equalToConstant: Layout.imageSize),
             characterImageView.heightAnchor.constraint(equalToConstant: Layout.imageSize),
+            
+            characterImageView.centerXAnchor.constraint(equalTo: characterBgView.centerXAnchor),
+            characterImageView.topAnchor.constraint(equalTo: characterBgView.topAnchor, constant: Layout.spacing),
+            characterImageView.bottomAnchor.constraint(equalTo: characterBgView.bottomAnchor, constant: -Layout.spacing),
         ])
     }
     

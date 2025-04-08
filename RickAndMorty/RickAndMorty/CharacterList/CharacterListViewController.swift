@@ -22,6 +22,25 @@ class CharacterListViewController: UIViewController, CharacterListDisplayLogic {
     private var router: (CharacterListRoutingLogic & CharacterListDataPassing)?
     
     private let tableView = UITableView()
+    
+    private let loadingIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.hidesWhenStopped = true
+        indicator.color = .gray
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
+    
+    private let emptyStateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.textColor = .gray
+        label.numberOfLines = 0
+        return label
+    }()
+    
     private var characters: [CharacterList.FetchCharacters.ViewModel.CharacterViewModel] = []
     
     // MARK: - Lifecycle
@@ -40,6 +59,8 @@ class CharacterListViewController: UIViewController, CharacterListDisplayLogic {
         super.viewDidLoad()
         title = "Rick and Morty Characters"
         setupTableView()
+        setupEmptyStateView()
+        setupLoadingIndicator()
         fetchCharacters()
     }
     
@@ -54,16 +75,54 @@ class CharacterListViewController: UIViewController, CharacterListDisplayLogic {
         tableView.dataSource = self
     }
     
+    private func setupEmptyStateView() {
+        view.addSubview(emptyStateLabel)
+        
+        NSLayoutConstraint.activate([
+            emptyStateLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            emptyStateLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+    }
+    
+    private func setupLoadingIndicator() {
+        view.addSubview(loadingIndicator)
+        
+        NSLayoutConstraint.activate([
+            loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
     private func fetchCharacters() {
+        displayLoading()
         interactor?.fetchCharacters(request: CharacterList.FetchCharacters.Request(page: 1))
     }
     
     // MARK: - Display logic
     func displayCharacters(viewModel: CharacterList.FetchCharacters.ViewModel) {
         DispatchQueue.main.async { [weak self] in
-            self?.characters = viewModel.characters
-            self?.tableView.reloadData()
+            self?.loadingIndicator.stopAnimating()
+            
+            if viewModel.characters.isEmpty {
+                self?.displayEmptyState(message: "No characters to display")
+            } else {
+                self?.characters = viewModel.characters
+                self?.tableView.reloadData()
+            }
         }
+    }
+    
+    private func displayLoading() {
+        emptyStateLabel.isHidden = true
+        loadingIndicator.startAnimating()
+    }
+    
+    private func displayEmptyState(message: String) {
+        loadingIndicator.stopAnimating()
+        
+        tableView.isHidden = true
+        emptyStateLabel.text = message
+        emptyStateLabel.isHidden = false
     }
 }
 
